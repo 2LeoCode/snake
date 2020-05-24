@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 00:37:17 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 20:47:54 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 20:55:27 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static int		main_menu(void)
 	mvwprintw(menu, 4, 1, "2. Leaderboard");
 	mvwprintw(menu, LINES / 2 - 2, COLS / 2 - 18, "[ESC]. Leave Game");
 	wrefresh(menu);
+	free(menu);
 	if ((ret = choose_option()) == 2)
 		return (main_menu());
-	free(menu);
 	return (ret);
 }
 

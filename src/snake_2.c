@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:37:24 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 19:25:46 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 20:56:30 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ t_coords	generate_bonus(void)
 	t_coords tmp;
 
 	srand(time(NULL));
-	tmp.x = 1 + rand() % ((LINES / 2) - 3);
-	tmp.y = 1 + rand() % ((COLS / 2) - 3);
+	tmp.x = 1 + rand() % (WIN_X - 1);
+	tmp.y = 1 + rand() % (WIN_Y - 1);
 	return (tmp);
 }
 
