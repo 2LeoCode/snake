@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:47:07 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 17:21:13 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 19:28:17 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,19 @@ int		choose_option(void)
 		}
 	}
 	return (2);
+}
+
+void	add_member(t_list **snake)
+{
+	t_list	*tmp;
+
+	tmp = ft_lstlast(*snake);
+	if (tmp->head == NORTH)
+		tmp->next = ft_lstnew(tmp->pos_x + 1, tmp->pos_y, NORTH);
+	if (tmp->head == SOUTH)
+		tmp->next = ft_lstnew(tmp->pos_x - 1, tmp->pos_y, SOUTH);
+	if (tmp->head == WEST)
+		tmp->next = ft_lstnew(tmp->pos_x, tmp->pos_y + 1, WEST);
+	if (tmp->head == EAST)
+		tmp->next = ft_lstnew(tmp->pos_x, tmp->pos_y - 1, EAST);
 }

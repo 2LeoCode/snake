@@ -6,13 +6,13 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 00:37:17 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 17:21:45 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 19:27:54 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <snake.h>
 
-static int	main_menu(void)
+static int		main_menu(void)
 {
 	WINDOW	*menu;
 	int		ret;
@@ -38,19 +38,21 @@ static void		game_over(unsigned int score)
 	nodelay(stdscr, FALSE);
 	beep();
 	clear();
-	if (!(death_screen
-	= subwin(stdscr, LINES / 2, COLS / 2, LINES / 4, COLS / 4)))
+	if (!(death_screen = subwin(stdscr, LINES / 2, COLS / 2,
+	LINES / 4, COLS / 4)))
 		exit(EXIT_FAILURE);
 	box(death_screen, ACS_VLINE, ACS_HLINE);
 	mvwprintw(death_screen, (LINES / 4) - 1, (COLS / 4) - 4, "GAME OVER");
 	mvwprintw(death_screen, (LINES / 4), (COLS / 4) - 4, "Score: %u", score);
-	mvwprintw(death_screen, (LINES / 4) + 1, (COLS / 4) - 18, "Press any key to go back to main menu.");
+	mvwprintw(death_screen, (LINES / 4) + 1, (COLS / 4) - 18,
+	"Press any key to go back to main menu.");
 	refresh();
 	getch();
 	nodelay(stdscr, TRUE);
 }
 
-static void		start_game(WINDOW *game, t_list **snake, unsigned int score, double speed)
+static void		start_game(WINDOW *game, t_list **snake,
+unsigned int score, double speed)
 {
 	int				tmp;
 	t_head			face;
@@ -65,7 +67,7 @@ static void		start_game(WINDOW *game, t_list **snake, unsigned int score, double
 			if (((tmp = get_direction(face)) < 0) && pause_menu())
 				break ;
 			else
-				face = tmp;
+				face = (((tmp == face - 2) || (tmp == face + 2)) ? face : tmp);
 		}
 		if ((tmp = get_elems(snake, &bonus, face, &speed)) == -1)
 		{
@@ -78,7 +80,7 @@ static void		start_game(WINDOW *game, t_list **snake, unsigned int score, double
 	}
 }
 
-static int		snake()
+static int		snake(void)
 {
 	WINDOW			*game;
 	t_list			*snake;
@@ -98,9 +100,8 @@ static int		snake()
 	return (0);
 }
 
-int				main()
+int				main(void)
 {
-	
 	initscr();
 	noecho();
 	while (1)

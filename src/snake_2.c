@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:37:24 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 16:47:42 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 19:25:46 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ t_coords	generate_bonus(void)
 	return (tmp);
 }
 
-int			get_elems(t_list **snake, t_coords *bonus, t_head face, double *speed)
+int			get_elems(t_list **snake, t_coords *bonus,
+t_head face, double *speed)
 {
 	int		tmp;
 

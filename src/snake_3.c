@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:43:39 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 16:49:36 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 19:23:10 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_game(t_list *snake, WINDOW *game)
 	int		count;
 
 	count = 3;
-
 	while (count--)
 	{
 		clear();
@@ -40,7 +39,7 @@ void	get_next_head(t_list **snake)
 {
 	t_list	*tmp;
 	t_list	*head;
-	
+
 	tmp = *snake;
 	head = tmp->next;
 	while (head)
@@ -56,21 +55,6 @@ void	get_next_head(t_list **snake)
 		tmp = head;
 		head = head->next;
 	}
-}
-
-void	add_member(t_list **snake)
-{
-	t_list	*tmp;
-
-	tmp = ft_lstlast(*snake);
-	if (tmp->head == NORTH)
-		tmp->next = ft_lstnew(tmp->pos_x + 1, tmp->pos_y, NORTH);
-	if (tmp->head == SOUTH)
-		tmp->next = ft_lstnew(tmp->pos_x - 1, tmp->pos_y, SOUTH);
-	if (tmp->head == WEST)
-		tmp->next = ft_lstnew(tmp->pos_x, tmp->pos_y + 1, WEST);
-	if (tmp->head == EAST)
-		tmp->next = ft_lstnew(tmp->pos_x, tmp->pos_y - 1, EAST);
 }
 
 int		check_pos(t_list *snake_head)
@@ -103,7 +87,8 @@ int		pause_menu(void)
 	box(pause, ACS_VLINE, ACS_HLINE);
 	mvwprintw(pause, (LINES / 4) - 1, (COLS / 4) - 2, "PAUSE");
 	mvwprintw(pause, LINES / 4, (COLS / 4) - 13, "Press any key to continue.");
-	mvwprintw(pause, (LINES / 4) + 1, (COLS / 4) - 17, "Or press 1. to go back to main menu");
+	mvwprintw(pause, (LINES / 4) + 1, (COLS / 4) - 17,
+	"Or press 1. to go back to main menu");
 	refresh();
 	free(pause);
 	c = getch();
