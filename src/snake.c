@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 00:37:17 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 19:27:54 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 19:42:12 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ unsigned int score, double speed)
 			if (((tmp = get_direction(face)) < 0) && pause_menu())
 				break ;
 			else
-				face = (((tmp == face - 2) || (tmp == face + 2)) ? face : tmp);
+				face = (((tmp == (int)face - 2) || (tmp == (int)face + 2)) ? face : tmp);
 		}
 		if ((tmp = get_elems(snake, &bonus, face, &speed)) == -1)
 		{
@@ -89,8 +89,9 @@ static int		snake(void)
 
 	score = 0;
 	speed = 0.3;
-	snake = ft_lstnew(LINES / 4, COLS / 4, NORTH);
-	if (!(game = subwin(stdscr, LINES / 2, COLS / 2, LINES / 4, COLS / 4)))
+	snake = ft_lstnew(WIN_X / 2, WIN_Y / 2, NORTH);
+	if (!(game = subwin(stdscr, WIN_X, WIN_Y,
+	(LINES / 2) - (WIN_X / 2), (COLS / 2) - (WIN_Y / 2))))
 		return (-1);
 	init_game(snake, game);
 	nodelay(stdscr, TRUE);

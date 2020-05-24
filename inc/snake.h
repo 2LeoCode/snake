@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 00:36:26 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 19:30:48 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 19:44:19 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@
 # define DOWN 66
 # define RIGHT 67
 # define LEFT 68
-# define WIN_X 26
-# define WIN_Y 90
+# ifndef WIN_X
+#  define WIN_X 26
+# endif
+# ifndef WIN_Y
+#  define WIN_Y 90
+# endif
 
 typedef enum		e_head
 {
