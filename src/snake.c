@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 00:37:17 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 20:55:27 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 01:45:16 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static int		main_menu(void)
 	return (ret);
 }
 
-static void		game_over(unsigned int score)
+static void		game_over(unsigned int score, t_list *snake, WINDOW *game)
 {
 	WINDOW	*death_screen;
 
+	death_animation(snake, game);
 	nodelay(stdscr, FALSE);
-	beep();
 	clear();
 	if (!(death_screen = subwin(stdscr, LINES / 2, COLS / 2,
 	LINES / 4, COLS / 4)))
@@ -64,15 +64,21 @@ unsigned int score, double speed)
 	{
 		if (ft_kbhit())
 		{
-			if (((tmp = get_direction(face)) < 0) && pause_menu())
-				break ;
+			if (((tmp = get_direction(face)) < 0))
+			{
+				if (pause_menu())
+					break ;
+				continue ;
+			}
+			if (ft_lstsize(*snake) == 1)
+				face = tmp;
 			else
 				face = (((tmp == (int)face - 2) || (tmp == (int)face + 2)) ?
 				face : (unsigned int)tmp);
 		}
 		if ((tmp = get_elems(snake, &bonus, face, &speed)) == -1)
 		{
-			game_over(score);
+			game_over(score, *snake, game);
 			return ;
 		}
 		score += tmp;

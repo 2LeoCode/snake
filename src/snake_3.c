@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:43:39 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 19:23:10 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 01:27:10 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void	init_game(t_list *snake, WINDOW *game)
 	{
 		clear();
 		box(game, ACS_VLINE, ACS_HLINE);
+		wattron(game, A_BOLD);
 		mvwprintw(game, 3, 5, "Get ready...");
 		mvwaddch(game, snake->pos_x, snake->pos_y, CHARACTER);
 		mvwaddch(game, 3, 20, count + 49);
+		wattroff(game, A_BOLD);
 		refresh();
 		sleep(1);
 	}
@@ -85,7 +87,9 @@ int		pause_menu(void)
 	if (!(pause = subwin(stdscr, LINES / 2, COLS / 2, LINES / 4, COLS / 4)))
 		exit(EXIT_FAILURE);
 	box(pause, ACS_VLINE, ACS_HLINE);
+	wattron(pause, A_BOLD);
 	mvwprintw(pause, (LINES / 4) - 1, (COLS / 4) - 2, "PAUSE");
+	wattroff(pause, A_BOLD);
 	mvwprintw(pause, LINES / 4, (COLS / 4) - 13, "Press any key to continue.");
 	mvwprintw(pause, (LINES / 4) + 1, (COLS / 4) - 17,
 	"Or press 1. to go back to main menu");

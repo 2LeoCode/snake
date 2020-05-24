@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:47:07 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 19:28:17 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 01:12:04 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,28 @@ void	add_member(t_list **snake)
 		tmp->next = ft_lstnew(tmp->pos_x, tmp->pos_y + 1, WEST);
 	if (tmp->head == EAST)
 		tmp->next = ft_lstnew(tmp->pos_x, tmp->pos_y - 1, EAST);
+}
+
+void	death_animation(t_list *snake, WINDOW *game)
+{
+	t_list	*tmp;
+
+	beep();
+	while (snake)
+	{
+		if (ft_kbhit())
+			return ;
+		clear();
+		tmp = snake->next;
+		box(game, ACS_VLINE, ACS_HLINE);
+		mvwaddch(game, snake->pos_x, snake->pos_y, 'O');
+		while (tmp)
+		{
+			mvwaddch(game, tmp->pos_x, tmp->pos_y, 'o');
+			tmp = tmp->next;
+		}
+		refresh();
+		ft_wait(0.1);
+		snake = snake->next;
+	}
 }

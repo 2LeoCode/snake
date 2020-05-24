@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 00:36:26 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 19:44:19 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 01:34:25 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int					choose_option(void);
 int					check_pos(t_list *snake_head);
 int					pause_menu(void);
 void				init_game(t_list *snake, WINDOW *game);
+void				death_animation(t_list *snake, WINDOW *game);
 
 /*
 ** utils
@@ -90,4 +91,5 @@ t_bool				ft_kbhit(void);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstclear(t_list **lst);
 void				ft_wait(double seconds);
+int					ft_lstsize(t_list *lst);
 #endif

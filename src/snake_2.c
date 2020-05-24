@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:37:24 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 20:56:30 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 01:29:32 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,18 @@ void		display_elems(t_list *snake, t_coords bonus, WINDOW *game)
 {
 	clear();
 	box(game, ACS_VLINE, ACS_HLINE);
+	start_color();
+	init_pair(1, COLOR_GREEN, COLOR_BLACK);
+	wattron(game, A_BOLD);
+	wattron(game, COLOR_PAIR(1));
 	mvwaddch(game, bonus.x, bonus.y, '*');
+	wattroff(game, COLOR_PAIR(1));
 	while (snake)
 	{
 		mvwaddch(game, snake->pos_x, snake->pos_y, CHARACTER);
 		snake = snake->next;
 	}
+	wattroff(game, A_BOLD);
 	refresh();
 }
 
@@ -81,8 +87,8 @@ t_coords	generate_bonus(void)
 	t_coords tmp;
 
 	srand(time(NULL));
-	tmp.x = 1 + rand() % (WIN_X - 1);
-	tmp.y = 1 + rand() % (WIN_Y - 1);
+	tmp.x = 1 + rand() % (WIN_X - 2);
+	tmp.y = 1 + rand() % (WIN_Y - 2);
 	return (tmp);
 }
 

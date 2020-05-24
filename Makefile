@@ -6,7 +6,7 @@
 #    By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/24 16:50:01 by lsuardi           #+#    #+#              #
-#    Updated: 2020/05/24 19:47:31 by lsuardi          ###   ########.fr        #
+#    Updated: 2020/05/25 01:34:44 by lsuardi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC		=	snake.c\
 			snake_3.c\
 			snake_4.c\
 			utils.c\
-			utils_2.c
+			utils_2.c\
+			utils_3.c
 OBJ		=	$(SRC:.c=.o)
 CFLAGS	=	-Wall -Wextra -Werror -I $(INCDIR) -D WIN_X=$(WIN_X) -D WIN_Y=$(WIN_Y)
 
