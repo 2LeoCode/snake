@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 00:37:17 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/24 20:45:27 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/24 20:47:54 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ unsigned int score, double speed)
 			if (((tmp = get_direction(face)) < 0) && pause_menu())
 				break ;
 			else
-				face = (unsigned int)
-				(((tmp == (int)face - 2) || (tmp == (int)face + 2)) ? face : tmp);
+				face = (((tmp == (int)face - 2) || (tmp == (int)face + 2)) ?
+				face : (unsigned int)tmp);
 		}
 		if ((tmp = get_elems(snake, &bonus, face, &speed)) == -1)
 		{
