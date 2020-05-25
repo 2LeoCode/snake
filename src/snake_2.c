@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:37:24 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/25 01:29:32 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 02:28:31 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ void		display_elems(t_list *snake, t_coords bonus, WINDOW *game)
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	wattron(game, A_BOLD);
 	wattron(game, COLOR_PAIR(1));
-	mvwaddch(game, bonus.x, bonus.y, '*');
+	wattron(game, A_ALTCHARSET);
+	mvwaddch(game, bonus.x, bonus.y, ACS_DIAMOND);
+	wattroff(game, A_ALTCHARSET);
 	wattroff(game, COLOR_PAIR(1));
 	while (snake)
 	{

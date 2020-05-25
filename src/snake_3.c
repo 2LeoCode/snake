@@ -6,16 +6,11 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:43:39 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/25 01:27:10 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 02:46:43 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <snake.h>
-
-t_bool	check_input(int input)
-{
-	return ((input >= 5) && (input <= LINES));
-}
 
 void	init_game(t_list *snake, WINDOW *game)
 {

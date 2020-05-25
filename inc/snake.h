@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 00:36:26 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/25 01:34:25 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 02:46:50 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void				display_elems(t_list *snake, t_coords bonus, WINDOW *game);
 int					get_direction(t_head prev);
 int					get_next_pos(t_list **snake, t_coords bonus,
 t_head new_head);
-t_bool				check_input(int input);
 void				get_next_head(t_list **snake);
 void				add_member(t_list **snake);
 int					show_leaderboard(void);

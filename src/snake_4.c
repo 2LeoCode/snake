@@ -6,7 +6,7 @@
 /*   By: lsuardi <lsuardi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 16:47:07 by lsuardi           #+#    #+#             */
-/*   Updated: 2020/05/25 01:12:04 by lsuardi          ###   ########.fr       */
+/*   Updated: 2020/05/25 02:45:59 by lsuardi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int		show_leaderboard(void)
 	mvwprintw(leaderboard, 1, COLS / 4 - 4, "Leaderboard");
 	mvwprintw(leaderboard, LINES / 2 - 2, COLS / 2 - 20, "[ESC]. Back to menu");
 	wrefresh(leaderboard);
-	while (getch() != 27)
-		continue;
+	nodelay(stdscr, TRUE);
+	while (1)
+		if ((getch() == 27) && (getch() == -1))
+			break ;
+	nodelay(stdscr, FALSE);
 	free(leaderboard);
 	return (2);
 }
